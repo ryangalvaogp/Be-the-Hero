@@ -10,12 +10,12 @@
 </h4>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/andersonheinz/react-semanaoministack11-rocketseat">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ryangalvaogp/Be-the-Hero">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/andersonheinz/react-semanaoministack11-rocketseat">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/ryangalvaogp/Be-the-Hero">
   
-  <a href="https://github.com/andersonheinz/react-semanaoministack11-rocketseat/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/andersonheinz/react-semanaoministack11-rocketseat">
+  <a href="https://github.com/ryangalvaogp/Be-the-Hero/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ryangalvaogp/Be-the-Hero">
   </a>
 
   <a href="https://rocketseat.com.br">
