@@ -1,13 +1,10 @@
 import React from 'react';
-import '../src/global.css'
-import Routes from '../src/router';
 
+import Routes from './routes';
 
-function App(){
-
+function App() {
   return (
-     <Routes/>
-    
+    <Routes />
   );
 }
 

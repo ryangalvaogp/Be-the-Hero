@@ -3,13 +3,20 @@
 module.exports = {
 
   development: {
-    client: 'mysql',
-    connection: { 
-      port: '3308',
-      database: 'newschema',
-      host:'127.0.0.1',
-      user: 'root',
-      password: '',
+    client: 'sqlite3',
+    connection: {
+      filename: './src/database/db.sqlite'
+    },
+    migrations: {
+      directory: './src/database/migrations'
+    },
+    useNullAsDefault: true,
+  },
+
+  test: {
+    client: 'sqlite3',
+    connection: {
+      filename: './src/database/test.sqlite'
     },
     migrations: {
       directory: './src/database/migrations'

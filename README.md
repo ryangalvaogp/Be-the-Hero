@@ -10,7 +10,17 @@
 </h4>
 
 <p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/andersonheinz/react-semanaoministack11-rocketseat">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/andersonheinz/react-semanaoministack11-rocketseat">
   
+  <a href="https://github.com/andersonheinz/react-semanaoministack11-rocketseat/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/andersonheinz/react-semanaoministack11-rocketseat">
+  </a>
+
+  <a href="https://rocketseat.com.br">
+    <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-red">
+  </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
@@ -39,14 +49,16 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 Be the Hero é um projeto que visa ajudar instituições sem fins lucrativos, o cadastro das instituições é feito na web, através do app as pessoas podem entrar em contato para fazerem doações e ajudar em determinada causa!
 
 ## 💻 Web Demo
-  <img alt="Página inicial" src="https://github.com/ryangalvaogp/Be-the-Hero---Semana-Oministack-11---Rocketseat-/blob/master/img/index.png?raw=true">
-  
-<img alt="Incidents" src="https://github.com/ryangalvaogp/Be-the-Hero---Semana-Oministack-11---Rocketseat-/blob/master/img/incidents.png?raw=true" >
 
 ![](/img/index.png)
 
 ![](/img/incidents.png)
 
+## 📱 App Demo
+
+App mobile para acessar os casos e entrar em contato com as instituições.
+
+![](/img/app.jpg)
 
 ## :anger: Pré-requisitos:
  - Ter o ambiente preparado com nodejs, node, npm, yarn.
@@ -113,6 +125,41 @@ http://localhost:3333/ongs
 Página index da aplicação web
 http://localhost:3000/
 
+### Executar aplicação Mobile
+- Alterar o IP da baseURL no arquivo react-semanaoministack11-rocketseat/mobile/src/services/api.js
+
+```sh
+const api = axios.create({
+  baseURL: 'http://192.168.X.XXX:3333'
+});
+```
+Para iniciar a aplicação mobile executar yarn start, expo start ou npm start.
+
+```sh
+$ expo start
+```
+> Com o expo não é necessário instalar o Sdk do Android ou o XCode para MAC.
+
+Irá abrir no navegador a página do expo. 
+
+Abrir o app do Expo instalado no dispositivo móvel, escanear o QR Code do navegador, e estará pronto para uso.
+
+Caso apareça no terminal algum erro referente watchamn max_user_watches, execute o comando:
+```sh
+$ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+> Error: Watchman error: A non-recoverable condition has triggered.  Watchman needs your help!
+>The triggering condition was at timestamp=1586779636: inotify-add-watch(/home/heinz/Projetos/react-semanaoministack11->rocketseat/backend/node_modules/expect/node_modules/ansi-styles) -> The user limit on the total number of inotify watches >was reached; increase the fs.inotify.max_user_watches sysctl
+>All requests will continue to fail with this message until you resolve
+>the underlying problem.  You will find more information on fixing this at
+>https://facebook.github.io/watchman/docs/troubleshooting.html#poison-inotify-add-watch. Make sure watchman is running for >this project. See https://facebook.github.io/watchman/docs/troubleshooting.html.
+
+Executar novamente expo start, não deverá aparecer mais este erro no terminal, escaneie o QR Code.
+
+Se o app não carregar e aparecer "could not load... timeout" será necessario desabilitar o firewall, e executar novamente o expo start e escanear o QR Code.
+```sh
+$ sudo ufw disable
+```
 
 ### :memo: Licença
 

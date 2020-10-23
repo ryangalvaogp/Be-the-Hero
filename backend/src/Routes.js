@@ -1,52 +1,45 @@
-const express = require ('express');
+const express = require('express');
+const { celebrate, Segments, Joi } = require('celebrate');
+
+const SessionController = require('./controllers/SessionController');
+const OngController = require('./controllers/OngController');
+const IncidentController = require('./controllers/IncidentController');
+const ProfileController = require('./controllers/ProfileController');
+
 const routes = express.Router();
 
+routes.post('/sessions', SessionController.create);
 
-const IncidentsController = require('./Controllers/IncidentsControllers')
-const OngController = require ('./Controllers/OngControllers');
-const ProfilesController = require ('./Controllers/Profilescontrollers');
-const SessionController = require ('./Controllers/SessionControlers');
-
-/**TODOS ROUTERS DE ONGS */
-/**Listagem de Ongs cadastradas */
 routes.get('/ongs', OngController.index);
 
-/** Cadastrar Ongs */
-routes.post('/ongs', OngController.create);
+routes.post('/ongs', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string().required(),
+    email: Joi.string().required().email(),
+    whatsapp: Joi.string().required().min(10).max(11),
+    city: Joi.string().required(),
+    uf: Joi.string().required().length(2),
+  })
+}), OngController.create);
 
+routes.get('/profile', celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.string().required(),
+  }).unknown(),
+}), ProfileController.index); 
 
+routes.get('/incidents', celebrate({
+  [Segments.QUERY]: Joi.object().keys({
+    page: Joi.number(),
+  })
+}) ,IncidentController.index);
 
-/**TODOS ROUTERS DE CASOS */
-/**Criar Casos */
-routes.post('/incidents', IncidentsController.create);
-/**Listar Casos */
-routes.get('/incidents', IncidentsController.index);
-/**Deletar Casos */
-routes.delete('/incidents/:id', IncidentsController.delete);
-routes.get('/profile/', ProfilesController.index);
+routes.post('/incidents', IncidentController.create);
 
-
-/** */
-routes.post('/session', SessionController.create)
+routes.delete('/incidents/:id', celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    id: Joi.number().required(),
+  })
+}) ,IncidentController.delete);
 
 module.exports = routes;
-
-
-    
-
-/**
- * Métodos HTP:
- * 
- * GET: Buscar uma informação no Back-end
- * POST: Criar uma informação no Back-end
- * PUT: Alterar uma informação no back-end
- * DELETE: Deletar uma informação no back-end
- */
-
-/**
- * Tipos de Parâmetros:
- * 
- * QUERY Params: Parâmetros enviados na rota após o sinal "?" no final da URL(Filtros, Paginação)
- * ROUTE Params: Parâmetros utilizados para identificar recursos
- * Request Body: Corpo de requisição, utilizado para criar ou alterar recursos
- */
