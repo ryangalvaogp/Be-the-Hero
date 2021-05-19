@@ -1,11 +1,14 @@
 // Update with your config settings.
+require('dotenv').config();
 
-module.exports = {
-
+module.exports= {
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './src/database/db.sqlite'
+      host:process.env.POSTGRESQL_ELEPHANT_HOST,
+      database:process.env.POSTGRESQL_ELEPHANT_DATABASE,
+      user: process.env.POSTGRESQL_ELEPHANT_USER,
+      password: process.env.POSTGRESQL_ELEPHANT_PASSWORD,
     },
     migrations: {
       directory: './src/database/migrations'
@@ -55,5 +58,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 };
